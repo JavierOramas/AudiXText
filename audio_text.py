@@ -1,9 +1,8 @@
 import speech_recognition as sr
 from pathlib import Path
-import typer
 
 #this function recieves the file path, the language, the noise span for adjusting the noise reduction algorithm and the show_alt bool to toggle show all alternatives on transcription
-def audio_to_text(file=typer.Argument(default='input.wav'), language=typer.Argument(default='es-ES'),noise_span=typer.Option(default=1), show_alt=typer.Option(default=False), ):
+def audio_to_text(file='input.wav', language='es-ES',noise_span=1, show_alt=False):
     #create the listener
     listener = sr.Recognizer()
     
