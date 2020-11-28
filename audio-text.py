@@ -2,8 +2,8 @@ import speech_recognition as sr
 from pathlib import Path
 import typer
 
-#this function recieves the file path, the noise span for adjusting the noise reduction algorithm and the show_alt bool to toggle show all alternatives on transcription
-def audio_to_text(file=typer.Argument(default='input.wav'), noise_span=typer.Option(default=1), show_alt=typer.Option(default=False)):
+#this function recieves the file path, the language, the noise span for adjusting the noise reduction algorithm and the show_alt bool to toggle show all alternatives on transcription
+def audio_to_text(file=typer.Argument(default='input.wav'), language=typer.Argument(default='es-ES'),noise_span=typer.Option(default=1), show_alt=typer.Option(default=False), ):
     #create the listener
     listener = sr.Recognizer()
     
@@ -16,7 +16,7 @@ def audio_to_text(file=typer.Argument(default='input.wav'), noise_span=typer.Opt
     
     #get the trnascription made by google (other options can be used but this is the most popular)
     try:
-        response = listener.recognize_google(audio, show_all=show_alt)
+        response = listener.recognize_google(audio, show_all=show_alt, language=language)
     except:
         response = 'Audio could not be transcrypted'
     
