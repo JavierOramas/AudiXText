@@ -10,8 +10,8 @@ Tool for converting audio to text and tecxt to audio
 
 ### Audio to Text
 
-`python script.py Audio {path_to_audio} {lang} --noise-span {duration, default 1s} --show-alt {Bool, default False}`
+`python script.py audio {path_to_audio} {lang} --noise-span {duration, default 1s} --show-alt {Bool, default False}`
 
 ### Text to Audio
 
-`python script.py Text {path_to_text} {lang}`
+`python script.py text {path_to_text} {lang}`
