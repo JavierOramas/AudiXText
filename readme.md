@@ -21,4 +21,4 @@ Tool for converting audio to text and tecxt to audio
 
 ### Text to Audio
 
-`python script.py text {path_to_text} {lang}`
+`python script.py text {text} {lang}`
