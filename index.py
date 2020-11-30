@@ -12,17 +12,17 @@ class uploadHandler(tornado.web.RequestHandler):
     def post(self):
         lang = audio = text = None
         try:
-            print(self.request.files)
-            lang = self.request.files['lang'] 
+            lang = str(self.request.arguments['lang'][0])[2:-1]
+            # lang = str([x.decode('utf-8') for x in self.request.arguments['lang']])[2:-2]
         except:
-            print('here')
+            lang = self.request.arguments['lang'].decode('utf-8')
             return None
         
         try:
-            audio = self.request.files['audio']
+            audio = self.request.arguments['audio']
         except:
             try:
-                text = self.request.files['text']
+                text = str([x.decode('utf-8') for x in self.request.arguments['text']])[2:-2]
             except:
                 return 'Invalid Data' 
         
