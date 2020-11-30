@@ -22,3 +22,15 @@ Tool for converting audio to text and tecxt to audio
 ### Text to Audio
 
 `python script.py text {text} {lang}`
+
+## API
+
+### Run Service
+
+`python index.py`
+
+### Webhooks
+
+<b>/text</b> recieves the text and lang arguments
+
+<b>/audio<b> recieves the audio and language arguments
