@@ -31,6 +31,6 @@ Tool for converting audio to text and tecxt to audio
 
 ### Webhooks
 
-<b>/text</b> recieves the text and lang arguments
+<b>/text</b> recieves the <i>text</i> and <i>lang</i> arguments
 
-<b>/audio<b> recieves the audio and language arguments
+<b>/audio</b> recieves the <i>audio</i> and <i>language</i> arguments
