@@ -1,9 +1,9 @@
 import tornado.web
 import tornado.ioloop
 import json
-import pandas as pd
 from audio_text import audio_to_text
 from text_audio import text_to_audio
+import os
 
 class uploadHandler(tornado.web.RequestHandler):
     def get(self):
@@ -28,20 +28,33 @@ class uploadHandler(tornado.web.RequestHandler):
         
         if audio is not None:
             for f in audio:
-                fh = open('audio/input.mp3', 'wb')
+                fh = open('audio/input.wav', 'wb')
                 fh.write(f.body)
                 fh.close()
-            # print('audio')
-            print(audio_to_text('audio/input.mp3', language=lang))
+                
+            resp = audio_to_text('audio/input.wav', language=lang)
+            
+            #saving text as txt temporary
+            with open('text/output.txt') as file:
+                file.write(resp)
+                
+            #start dowload of the file    
+            
+            os.remove('text/output.txt')
+            os.remove('audio/input.mp3')
+            
         
         if text is not None:
-            print(text)
-            print(text_to_audio(text,language=lang))
+            text_to_audio(text,language=lang)
+            
+            # start download the file on the client
+            
+            os.remove('audio/output.mp3')
+            
 
 if __name__ == '__main__':
         
-    # conf = pd.read_json('config.json').to_dict(orient=str)    
-    # print(conf.keys)
+    conf = json.load(open('settings/config.json'))
     
     app = tornado.web.Application([
       ("/", uploadHandler),
@@ -49,7 +62,8 @@ if __name__ == '__main__':
       ("/text", uploadHandler)  
     ])
     
-    app.listen(8080) #to be changed
-    print(f'listening on port 8080')
-    
+    app.listen(conf[port]) #to be changed
+    print(f'listening on port {conf[port]}')
+
     tornado.ioloop.IOLoop.instance().start()
+    

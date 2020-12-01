@@ -18,6 +18,7 @@ Tool for converting audio to text and tecxt to audio
 ### Audio to Text
 
 `python script.py audio {path_to_audio} {lang} --noise-span {duration, default 1s} --show-alt {Bool, default False}`
+audio should be on wav format
 
 ### Text to Audio
 
@@ -28,6 +29,8 @@ Tool for converting audio to text and tecxt to audio
 ### Run Service
 
 `python index.py`
+
+To Modify the port, go to settings/config.json and change it for the port you prefer
 
 ### Webhooks
 
