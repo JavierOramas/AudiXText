@@ -1,12 +1,17 @@
 FROM Ubuntu
+FROM python:3.7
 
-RUN 'sudo apt-get update'
-RUN 'sudo apt-get upgrade'
-RUN 'sudo apt-get install python3'
+WORKDIR /usr/src/app
 
-# RUN 'wget ' getpip
+RUN sudo apt-get update
+RUN sudo apt-get upgrade
 
-RUN 'pip install -r requirements.txt'
+COPY .requirements.txt /usr/src/app/requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY . /usr/src/app
+
 
 
 
